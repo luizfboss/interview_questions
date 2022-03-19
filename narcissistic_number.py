@@ -21,10 +21,16 @@ def narcissistic(value):
     result = sum(pre_result)
 
     if result == value:
-      return f"{value} is narcissistic"
+      return True
+      # f"{value} is narcissistic"
     else:
-      return f"{value} is not narcissistic"
+      return False
+      # f"{value} is not narcissistic"
 
+
+# One-line: 
+# def narcissistic(value):
+    # return value == sum(int(x) ** len(str(value)) for x in str(value))
 
 print(narcissistic(7))
 print(narcissistic(371))
