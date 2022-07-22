@@ -1,24 +1,16 @@
-# Given an integer x, return true if x is palindrome integer.
+def isPalindrome(self, x: int) -> bool:
+        # If x is a negative number it is not a palindrome
+        # If x % 10 = 0, in order for it to be a palindrome the first digit should also be 0
+        if x < 0 or (x > 0 and x%10 == 0):   
+            return False
 
+        reversedNum = 0
+        while x > reversedNum:
+            reversedNum = reversedNum * 10 + x % 10
+            x = x // 10
 
-def isPalindrome(x):
-    integer = [num for num in x]
-    integer_reverse = integer.reverse()
-    if int(x) < 0:
-        return False
-    elif integer == integer_reverse:
-        return True
-    else:
-        return False
-
-
-
-n = '123'
-a = '121'
-b = '4114'
-c = '123'
-
-print(isPalindrome(n))
-print(isPalindrome(a))
-print(isPalindrome(b))
-print(isPalindrome(c))
+        # If x is equal to reversed number then it is a palindrome
+        # If x has odd number of digits, dicard the middle digit before comparing with x
+        # Example, if x = 23132, at the end of for loop x = 23 and reversedNum = 231
+        # So, reversedNum/10 = 23, which is equal to x
+        return True if (x == reversedNum or x == reversedNum // 10) else False
