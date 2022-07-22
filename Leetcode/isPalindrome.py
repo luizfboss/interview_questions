@@ -1,4 +1,4 @@
-# First solution
+# First solution (with an integer number)
 
 def isPalindrome(self, x):
         number = x
@@ -43,3 +43,17 @@ def isPalindrome(self, x):
 
         # So, reversedNum/10 = 23, which is equal to x
         # return True if (x == reversedNum or x == reversedNum // 10) else False
+
+# ---------------------------------------------
+# Given the head of a singly linked list, return true if it is a palindrome.
+
+# First solution (with an array number)
+
+lista = [1,2,2,1] # True
+
+def isPalindrome(self, head):
+    if list(reversed(head)) == head:
+            return True
+    return False
+
+print(isPalindrome(lista))
