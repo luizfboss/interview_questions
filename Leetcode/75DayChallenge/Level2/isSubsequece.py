@@ -2,8 +2,6 @@
 
 # A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
 
-from operator import index
-
 
 def isSubsequence(s, t):
     """
@@ -11,24 +9,17 @@ def isSubsequence(s, t):
     :type t: str
     :rtype: bool
     """
-    #/charArray = map(lambda x: index(x), t)
+    if len(s) > len(t):
+        return False
+    if len(s) == 0:
+        return True
 
-   # for char in s:
-    #    charArray.append(s.index(char))
+    subsequence=0
 
+    for i in range(0,len(t)):
+        if subsequence <= len(s) -1:
+            print(s[subsequence])
+            if s[subsequence]==t[i]:
 
-
-
-initial = "abc"
-changed = "ahbgdc"
-
-charArray = [x for x in initial]
-
-
-
-
-print(charArray)
-
-
-
-# print(isSubsequence(initial, changed)) # True
+                subsequence+=1
+    return  subsequence == len(s) 
