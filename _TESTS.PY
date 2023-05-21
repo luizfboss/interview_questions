@@ -1,30 +1,17 @@
-def plusOne(digits):
-        """
-        :type digits: List[int]
-        :rtype: List[int]
-        """
-
-        """
-        Thoughts: 
-          - Turn the list of digits into an integer
-          - Add one to the integer
-          - Turn integer into a list using list compehension
-          - Return the new list
-        """
+# This question is asked by Google. Given a string, return whether or not it uses capitalization correctly. A string correctly uses capitalization if all letters are capitalized, no letters are capitalized, or only the first letter is capitalized.
 
 
-        # - Turn the list of digits into an integer
-        res = int("".join(map(str, digits)))
-
-        # - Add one to the integer
-        res += 1
-
-        # - Turn integer into a list using list compehension
-        # - Return the new list
-        return [int(x) for x in str(res)]
-        
+def CheckString(string):
+    if string.isupper() or string.islower() or string.iscapitalize():
+        return True
+    else:
+        chars = [letter for letter in string]
+        if chars[0].isupper() and chars[1:-1].islower():
+            return True
+    return False
 
 
-print(plusOne([1,2,3])) # [1,2,4]
-print(plusOne([4,3,2,1])) # [4,3,2,2]
-print(plusOne([9])) # [1, 0]
+print(CheckString("USA")) # true
+print(CheckString("Calvin")) # true
+print(CheckString("compUter")) # false
+print(CheckString("coding")) # true
