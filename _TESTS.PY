@@ -1,25 +1,38 @@
-def removeDuplicates(nums):
-  """
-  :type nums: List[int]
-  :rtype: int
-  """
-  seen = {}
-  count = 0
-  for i in range(0, len(nums)):
-      if nums[i] in seen:
-          #remove from the array
-          seen[nums[i]] += 1
-          nums[i] = "_"
+def isPalindrome(s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        # edge cases 
+        if len(s) == 0:
+            return ""
 
-      elif nums[i] not in seen:
-          seen[nums[i]] = 1
-          count += 1
+        string = ""
 
-  for j in range(nums.count("_")):
-      nums.remove("_")
-      
-  return len(nums)
+        for letter in s:
+            if letter != " ":
+                string += letter
+
+        string = string.lower()
+        
+        left = 0
+        right = len(string)-1
+
+        while right > left:
+            if not string[left].isalnum():
+                left += 1
+                continue
+            elif not string[right].isalnum():
+                right -= 1
+                continue
+            else:
+                if string[left] != string[right]:
+                    return False
+                left += 1
+                right -= 1
+        return True
 
 
-nums = [0,0,1,1,1,2,2,3,3,4]
-print(removeDuplicates(nums))
+print(isPalindrome("A man, a plan, a canal: Panama")) # true
+print(isPalindrome("race a car")) # false 
+print(isPalindrome(" ")) # true
