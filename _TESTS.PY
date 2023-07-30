@@ -1,38 +1,21 @@
-def isPalindrome(s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        # edge cases 
-        if len(s) == 0:
-            return ""
+def singleNumber(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    seen = {}
 
-        string = ""
+    for num in nums:
+        if num not in seen:
+            seen[num] = 1
+        elif num in seen:
+            seen[num] += 1
 
-        for letter in s:
-            if letter != " ":
-                string += letter
+    seen_keys = list(seen.keys())
+    result = list(seen.values()).index(1)
 
-        string = string.lower()
-        
-        left = 0
-        right = len(string)-1
+    return seen_keys[result]
 
-        while right > left:
-            if not string[left].isalnum():
-                left += 1
-                continue
-            elif not string[right].isalnum():
-                right -= 1
-                continue
-            else:
-                if string[left] != string[right]:
-                    return False
-                left += 1
-                right -= 1
-        return True
-
-
-print(isPalindrome("A man, a plan, a canal: Panama")) # true
-print(isPalindrome("race a car")) # false 
-print(isPalindrome(" ")) # true
+print(singleNumber([2,2,1]))
+print(singleNumber([4,1,2,1,2]))
+print(singleNumber([1]))
